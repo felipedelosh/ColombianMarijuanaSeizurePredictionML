@@ -11,6 +11,7 @@ from sklearn.preprocessing import StandardScaler
 from keras import models
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
+from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.metrics import mean_absolute_error, r2_score
 
 
@@ -73,8 +74,11 @@ X_test = scaler.transform(X_test)
 
 # Step 04 create model
 model = Sequential()
-model.add(Dense(64, activation='relu', input_shape=(X_train.shape[1],)))
+model.add(Dense(128, activation='relu', input_shape=(X_train.shape[1],)))
+model.add(Dense(64, activation='relu'))
 model.add(Dense(32, activation='relu'))
+model.add(Dense(16, activation='relu'))
+model.add(Dense(8, activation='relu'))
 model.add(Dense(1))
 
 
@@ -82,8 +86,10 @@ model.add(Dense(1))
 # Compile model
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_squared_error'])
 
+
 # fit
-model.fit(X_train, y_train, epochs=50, validation_data=(X_test, y_test))
+early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+model.fit(X_train, y_train, epochs=50, validation_data=(X_test, y_test), callbacks=[early_stopping])
 
 # Step 06 Evaluate
 loss, mse = model.evaluate(X_test, y_test)
@@ -92,7 +98,6 @@ mae = mean_absolute_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
 print("Model Evaluation Metrics")
 print(f'Mean Squared Error on test set: {mse}')
-print(f"LOSS: {loss}")
 print(f'Mean Absolute Error on test set: {mae}')
 print(f'R-squared on test set: {r2}')
 
@@ -101,7 +106,7 @@ print(f'R-squared on test set: {r2}')
 _YYYY = 2024
 _MM = 11
 _DD = 8
-_COD_MUN = 5001
+_COD_MUN = 5001 # 5001 MEDELLIN
 input_data = {
     'YEAR': [_YYYY],  # Año de la predicción
     'MONTH': [_MM],  # Mes de la predicción
