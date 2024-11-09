@@ -11,6 +11,7 @@ from sklearn.preprocessing import StandardScaler
 from keras import models
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
+from sklearn.metrics import mean_absolute_error, r2_score
 
 
 dtype_spec = {
@@ -78,18 +79,24 @@ model.add(Dense(1))
 
 
 # Step 05 fit the model
-
 # Compile model
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_squared_error'])
 
 # fit
-model.fit(X_train, y_train, epochs=20, validation_data=(X_test, y_test))
+model.fit(X_train, y_train, epochs=50, validation_data=(X_test, y_test))
 
-# Evaluate
+# Step 06 Evaluate
 loss, mse = model.evaluate(X_test, y_test)
+y_pred = model.predict(X_test)
+mae = mean_absolute_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+print("Model Evaluation Metrics")
 print(f'Mean Squared Error on test set: {mse}')
+print(f"LOSS: {loss}")
+print(f'Mean Absolute Error on test set: {mae}')
+print(f'R-squared on test set: {r2}')
 
-# Predit
+# Step 07 Predit
 # INPUT DATA TO PREDICT:
 _YYYY = 2024
 _MM = 11
