@@ -4,6 +4,7 @@ FelipedelosH
 TensorFlow - Keras
 colombian marijuana seizure
 """
+from datetime import datetime
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -13,6 +14,7 @@ from tensorflow.keras.layers import Dense
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.optimizers import Adam
 from sklearn.metrics import mean_absolute_error, r2_score
+from tensorflow.keras.models import load_model
 
 
 dtype_spec = {
@@ -79,6 +81,7 @@ model = Sequential()
 model.add(Dense(128, activation='relu', input_shape=(X_train.shape[1],)))
 model.add(Dense(64, activation='relu'))
 model.add(Dense(16, activation='relu'))
+model.add(Dense(8, activation='relu'))
 model.add(Dense(1))
 
 
@@ -91,7 +94,7 @@ model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['mean_squ
 
 
 # FIT with early stopping
-_epochs = 50
+_epochs = 100
 _patience = 10
 early_stopping = EarlyStopping(monitor='val_loss', patience=_patience, restore_best_weights=True)
 # fit
@@ -105,6 +108,13 @@ loss, mse = model.evaluate(X_test, y_test)
 y_pred = model.predict(X_test)
 mae = mean_absolute_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
+
+
+# Save train MODEL
+now = datetime.now()
+formatted_date = now.strftime("%Y-%m-%d-%H.%M")
+_output_model_filename = f"model-{formatted_date}.h5"
+model.save(_output_model_filename)
 
 
 # INFO TO CREATE LOG

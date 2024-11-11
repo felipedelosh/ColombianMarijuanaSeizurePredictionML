@@ -37,3 +37,16 @@ TEST RESULTS:
 LOSS & Mean Squared Error on test set: 9237.775390625
 Mean Absolute Error on test set: 10.16930198652079
 R-squared on test set: 0.03475163861982766
+
+Model Evaluation Metrics:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 57/100
+LAYERS: [128, 64, 32, 16, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9255.025390625
+Mean Absolute Error on test set: 10.230377467441413
+R-squared on test set: 0.03294958503395484
