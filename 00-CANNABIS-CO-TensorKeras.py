@@ -76,8 +76,9 @@ X_test = scaler.transform(X_test)
 
 # Step 04 create model
 model = Sequential()
-model.add(Dense(32, activation='relu', input_shape=(X_train.shape[1],)))
-model.add(Dense(8, activation='relu'))
+model.add(Dense(128, activation='relu', input_shape=(X_train.shape[1],)))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(16, activation='relu'))
 model.add(Dense(1))
 
 

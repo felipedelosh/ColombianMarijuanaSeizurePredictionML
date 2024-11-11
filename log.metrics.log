@@ -1,0 +1,39 @@
+
+Model Evaluation Metrics:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 20/20
+LAYERS: [64, 16, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9309.2958984375
+Mean Absolute Error on test set: 10.209970328122528
+R-squared on test set: 0.02727905363885852
+
+Model Evaluation Metrics:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 50/50
+LAYERS: [32, 8, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9312.083984375
+Mean Absolute Error on test set: 9.933910565145936
+R-squared on test set: 0.026989178709312833
+
+Model Evaluation Metrics:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 50/50
+LAYERS: [128, 64, 16, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9237.775390625
+Mean Absolute Error on test set: 10.16930198652079
+R-squared on test set: 0.03475163861982766
