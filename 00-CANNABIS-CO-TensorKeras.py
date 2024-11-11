@@ -8,10 +8,10 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from keras import models
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.optimizers import Adam
 from sklearn.metrics import mean_absolute_error, r2_score
 
 
@@ -39,15 +39,16 @@ df = df.drop(columns=['COD_DEPTO', 'DEPARTAMENTO', 'MUNICIPIO', 'UNIDAD'])
 # Dates preprocesing
 df['YEAR'] = df['FECHA HECHO'].dt.year
 df['MONTH'] = df['FECHA HECHO'].dt.month
-df['DAY'] = df['FECHA HECHO'].dt.day
 df = df.drop(columns=['FECHA HECHO'])
 
 # Input places only int
 del_codes_by_int_error = []
 
+_countInputData = 0
 for index, row in df.iterrows():
     try:
         int(row['COD_MUNI'])
+        _countInputData = _countInputData + 1
     except ValueError:
         del_codes_by_int_error.append(index)
 df = df.drop(del_codes_by_int_error)
@@ -57,11 +58,12 @@ df['COD_MUNI'] = df['COD_MUNI'].astype(int)
 
 
 # Select target X and result Y
-X = df[['YEAR', 'MONTH', 'DAY', 'COD_MUNI']]
+X = df[['YEAR', 'MONTH', 'COD_MUNI']]
 y = df['CANTIDAD']
 
 # dataset >> fit & test
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+_test_size = 0.2
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=_test_size, random_state=42)
 
 
 # Normalized
@@ -74,43 +76,64 @@ X_test = scaler.transform(X_test)
 
 # Step 04 create model
 model = Sequential()
-model.add(Dense(128, activation='relu', input_shape=(X_train.shape[1],)))
-model.add(Dense(64, activation='relu'))
-model.add(Dense(32, activation='relu'))
-model.add(Dense(16, activation='relu'))
+model.add(Dense(32, activation='relu', input_shape=(X_train.shape[1],)))
 model.add(Dense(8, activation='relu'))
 model.add(Dense(1))
 
 
 # Step 05 fit the model
 # Compile model
-model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_squared_error'])
+_learning_rate=0.001
+optimizer = Adam(learning_rate=_learning_rate)
+model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['mean_squared_error'])
 
 
+
+# FIT with early stopping
+_epochs = 50
+_patience = 10
+early_stopping = EarlyStopping(monitor='val_loss', patience=_patience, restore_best_weights=True)
 # fit
-early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
-model.fit(X_train, y_train, epochs=50, validation_data=(X_test, y_test), callbacks=[early_stopping])
+history = model.fit(X_train, y_train, epochs=_epochs, validation_data=(X_test, y_test), callbacks=[early_stopping])
+# Save Staticsts
+_epochs_trained = len(history.epoch)
+
 
 # Step 06 Evaluate
 loss, mse = model.evaluate(X_test, y_test)
 y_pred = model.predict(X_test)
 mae = mean_absolute_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
-print("Model Evaluation Metrics")
-print(f'Mean Squared Error on test set: {mse}')
-print(f'Mean Absolute Error on test set: {mae}')
-print(f'R-squared on test set: {r2}')
+
+
+# INFO TO CREATE LOG
+_output_evaluate = f"\nModel Evaluation Metrics:\n"
+_output_evaluate = _output_evaluate + f"Total INPUT X data: {_countInputData}\n"
+_layer_sizes = [layer.units for layer in model.layers if isinstance(layer, Dense)]
+_output_evaluate = _output_evaluate + "HYPERPARAMERS:\n"
+_output_evaluate = _output_evaluate + f'Learning rate:: {_learning_rate}\n'
+_output_evaluate = _output_evaluate + f'EPOCHS: {_epochs_trained}/{_epochs}\n'
+_output_evaluate = _output_evaluate + f'LAYERS: {_layer_sizes}\n'
+_output_evaluate = _output_evaluate + f'Patience: {_patience}\n'
+_output_evaluate = _output_evaluate + f'test size: {_test_size}\n'
+_output_evaluate = _output_evaluate + "TEST RESULTS:\n"
+_output_evaluate = _output_evaluate + f'LOSS & Mean Squared Error on test set: {mse}\n'
+_output_evaluate = _output_evaluate + f'Mean Absolute Error on test set: {mae}\n'
+_output_evaluate = _output_evaluate + f'R-squared on test set: {r2}\n'
+
+with open("log.metrics.log", "a", encoding="UTF-8") as f:
+    f.write(_output_evaluate)
+
+
 
 # Step 07 Predit
 # INPUT DATA TO PREDICT:
 _YYYY = 2024
 _MM = 11
-_DD = 8
 _COD_MUN = 5001 # 5001 MEDELLIN
 input_data = {
     'YEAR': [_YYYY],  # Año de la predicción
     'MONTH': [_MM],  # Mes de la predicción
-    'DAY': [_DD],  # Día de la predicción
     'COD_MUNI': [_COD_MUN]  # Código del municipio
 }
 
