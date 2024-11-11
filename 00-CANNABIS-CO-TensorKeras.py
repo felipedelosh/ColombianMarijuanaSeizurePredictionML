@@ -118,7 +118,7 @@ model.save(_output_model_filename)
 
 
 # INFO TO CREATE LOG
-_output_evaluate = f"\nModel Evaluation Metrics:\n"
+_output_evaluate = f"\nModel Evaluation Metrics {_output_model_filename}:\n"
 _output_evaluate = _output_evaluate + f"Total INPUT X data: {_countInputData}\n"
 _layer_sizes = [layer.units for layer in model.layers if isinstance(layer, Dense)]
 _output_evaluate = _output_evaluate + "HYPERPARAMERS:\n"
