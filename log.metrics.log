@@ -50,3 +50,211 @@ TEST RESULTS:
 LOSS & Mean Squared Error on test set: 9255.025390625
 Mean Absolute Error on test set: 10.230377467441413
 R-squared on test set: 0.03294958503395484
+
+Model Evaluation Metrics model-2024-11-10-23.52.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 61/100
+LAYERS: [100, 50, 30, 12, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9226.251953125
+Mean Absolute Error on test set: 10.044403168672256
+R-squared on test set: 0.03595509274287978
+
+Model Evaluation Metrics model-2024-11-11-16.45.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 45/100
+LAYERS: [80, 40, 20, 8, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9260.0166015625
+Mean Absolute Error on test set: 10.162434729919456
+R-squared on test set: 0.03242749902561437
+
+Model Evaluation Metrics model-2024-11-10-21.36.h5:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 39/100
+LAYERS: [128, 64, 16, 8, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9277.7568359375
+Mean Absolute Error on test set: 10.150476991376436
+R-squared on test set: 0.030575270189450388
+
+Model Evaluation Metrics model-2024-11-10-22.09.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 35/100
+LAYERS: [128, 64, 64, 16, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9279.8193359375
+Mean Absolute Error on test set: 9.15860221822993
+R-squared on test set: 0.0303589271579362
+
+Model Evaluation Metrics model-2024-11-10-22.31.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 20/100
+LAYERS: [128, 64, 32, 32, 16, 8, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9302.08984375
+Mean Absolute Error on test set: 9.651418831307064
+R-squared on test set: 0.028030250088537545
+
+Model Evaluation Metrics model-2024-11-10-22.59.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 21/100
+LAYERS: [256, 128, 64, 32, 16, 8, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9320.71484375
+Mean Absolute Error on test set: 9.634811679533682
+R-squared on test set: 0.026087030114971266
+
+Model Evaluation Metrics model-2024-11-11-16.54.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 22/100
+LAYERS: [128, 60, 40, 20, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9294.9248046875
+Mean Absolute Error on test set: 9.772799678034225
+R-squared on test set: 0.028780475655002413
+
+Model Evaluation Metrics model-2024-11-11-17.23.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 49/100
+LAYERS: [100, 32, 4, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9256.66015625
+Mean Absolute Error on test set: 10.729957250239755
+R-squared on test set: 0.032777645254777
+
+Model Evaluation Metrics model-2024-11-11-18.06.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 43/100
+LAYERS: [90, 10, 6, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9267.9599609375
+Mean Absolute Error on test set: 10.2317856324392
+R-squared on test set: 0.03159741068383304
+
+Model Evaluation Metrics model-2024-11-11-18.29.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 63/100
+LAYERS: [70, 20, 8, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9239.2607421875
+Mean Absolute Error on test set: 9.915179833425503
+R-squared on test set: 0.034596847207414294
+
+Model Evaluation Metrics model-2024-11-11-18.42.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 46/100
+LAYERS: [60, 10, 4, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9263.0
+Mean Absolute Error on test set: 10.211443995220153
+R-squared on test set: 0.03211567118683367
+
+Model Evaluation Metrics model-2024-11-11-19.49.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.001
+EPOCHS: 54/100
+LAYERS: [64, 16, 8, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9255.9736328125
+Mean Absolute Error on test set: 9.680757868988973
+R-squared on test set: 0.03285079245104383
+
+Model Evaluation Metrics model-2024-11-11-20.08.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.0001
+EPOCHS: 59/100
+LAYERS: [64, 16, 8, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9296.83984375
+Mean Absolute Error on test set: 11.534298112409434
+R-squared on test set: 0.028579499549013065
+
+Model Evaluation Metrics model-2024-11-11-20.15.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.01
+EPOCHS: 22/100
+LAYERS: [64, 16, 8, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9316.845703125
+Mean Absolute Error on test set: 11.2019408571726
+R-squared on test set: 0.0264905902991599
+
+Model Evaluation Metrics model-2024-11-11-20.28.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.1
+EPOCHS: 14/100
+LAYERS: [64, 16, 8, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9570.3623046875
+Mean Absolute Error on test set: 10.773152015756624
+R-squared on test set: -1.1555889061432012e-05
+
+Model Evaluation Metrics model-2024-11-11-20.59.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.005
+EPOCHS: 40/100
+LAYERS: [64, 16, 8, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9295.134765625
+Mean Absolute Error on test set: 9.830886932848275
+R-squared on test set: 0.0287586979259169

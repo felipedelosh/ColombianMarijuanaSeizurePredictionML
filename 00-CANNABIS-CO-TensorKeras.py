@@ -15,6 +15,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.optimizers import Adam
 from sklearn.metrics import mean_absolute_error, r2_score
 from tensorflow.keras.models import load_model
+import matplotlib.pyplot as plt
 
 
 dtype_spec = {
@@ -78,8 +79,7 @@ X_test = scaler.transform(X_test)
 
 # Step 04 create model
 model = Sequential()
-model.add(Dense(128, activation='relu', input_shape=(X_train.shape[1],)))
-model.add(Dense(64, activation='relu'))
+model.add(Dense(64, activation='relu', input_shape=(X_train.shape[1],)))
 model.add(Dense(16, activation='relu'))
 model.add(Dense(8, activation='relu'))
 model.add(Dense(1))
@@ -87,7 +87,7 @@ model.add(Dense(1))
 
 # Step 05 fit the model
 # Compile model
-_learning_rate=0.001
+_learning_rate=0.005
 optimizer = Adam(learning_rate=_learning_rate)
 model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['mean_squared_error'])
 
@@ -102,6 +102,15 @@ history = model.fit(X_train, y_train, epochs=_epochs, validation_data=(X_test, y
 # Save Staticsts
 _epochs_trained = len(history.epoch)
 
+# SHOW LOSS
+import matplotlib.pyplot as plt
+
+# Mostrar la pérdida durante las épocas
+# plt.plot(history.history["loss"])
+# plt.xlabel("#Época")
+# plt.ylabel("Magnitud de pérdida")
+# plt.title("Pérdida durante el entrenamiento")
+# plt.show()
 
 # Step 06 Evaluate
 loss, mse = model.evaluate(X_test, y_test)
@@ -113,7 +122,7 @@ r2 = r2_score(y_test, y_pred)
 # Save train MODEL
 now = datetime.now()
 formatted_date = now.strftime("%Y-%m-%d-%H.%M")
-_output_model_filename = f"model-{formatted_date}.h5"
+_output_model_filename = f"model-{formatted_date}.keras"
 model.save(_output_model_filename)
 
 
