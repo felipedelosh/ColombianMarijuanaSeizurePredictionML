@@ -10,11 +10,12 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.optimizers import Adam
 from sklearn.metrics import mean_absolute_error, r2_score
 from tensorflow.keras.models import load_model
+from tensorflow.keras.layers import Input
 import matplotlib.pyplot as plt
 
 
@@ -79,9 +80,13 @@ X_test = scaler.transform(X_test)
 
 # Step 04 create model
 model = Sequential()
-model.add(Dense(64, activation='relu', input_shape=(X_train.shape[1],)))
-model.add(Dense(16, activation='relu'))
+model.add(Input(shape=(X_train.shape[1],)))
+model.add(Dense(70, activation='relu'))
+model.add(Dropout(0.2))
+model.add(Dense(20, activation='relu'))
+model.add(Dropout(0.2))
 model.add(Dense(8, activation='relu'))
+model.add(Dropout(0.2))
 model.add(Dense(1))
 
 

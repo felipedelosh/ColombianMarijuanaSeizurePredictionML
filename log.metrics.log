@@ -258,3 +258,42 @@ TEST RESULTS:
 LOSS & Mean Squared Error on test set: 9295.134765625
 Mean Absolute Error on test set: 9.830886932848275
 R-squared on test set: 0.0287586979259169
+
+Model Evaluation Metrics model-2024-11-12-11.24.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.005
+EPOCHS: 13/100
+LAYERS: [128, 80, 50, 30, 12, 8, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9490.61328125
+Mean Absolute Error on test set: 10.903975887214965
+R-squared on test set: 0.008345823170127997
+
+Model Evaluation Metrics model-2024-11-12-11.54.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.005
+EPOCHS: 24/100
+LAYERS: [32, 128, 64, 32, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9340.1142578125
+Mean Absolute Error on test set: 10.235912051326286
+R-squared on test set: 0.024052060646189588
+
+Model Evaluation Metrics model-2024-11-12-12.07.keras:
+Total INPUT X data: 908625
+HYPERPARAMERS:
+Learning rate:: 0.005
+EPOCHS: 15/100
+LAYERS: [70, 20, 8, 1]
+Patience: 10
+test size: 0.2
+TEST RESULTS:
+LOSS & Mean Squared Error on test set: 9329.708984375
+Mean Absolute Error on test set: 11.761614640179337
+R-squared on test set: 0.025146760613259045
